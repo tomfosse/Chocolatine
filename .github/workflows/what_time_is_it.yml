@@ -1,0 +1,12 @@
+name: Get the hour and date
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  get_time:
+    runs-on: self-hosted
+    steps:
+      - name: get_date
+        run: date
