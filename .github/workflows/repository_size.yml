@@ -12,5 +12,7 @@ jobs:
             uses: actions/checkout@v6.0.2
             with:
                 -sparse-checkout: .
-          - name: Get size
+          - name: Get name branch
             run: echo ${{ github.ref_name }}
+          - name: Get size Repository
+            run: du -skh --exclude=".git"
