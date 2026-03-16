@@ -13,4 +13,4 @@ jobs:
             with:
                 -sparse-checkout: .
           - name: Get size
-            run: echo ${{ github.repository }}
+            run: echo ${{ github.workspace }}
