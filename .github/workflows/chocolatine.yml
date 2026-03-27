@@ -21,4 +21,4 @@ jobs:
             exit 1
           fi
       - name: Get name branch
-        run: echo ${{ github.workflow }}
+        run: echo ${{ github.repository }}
