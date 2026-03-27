@@ -12,8 +12,13 @@ jobs:
       - uses: pixta-dev/repository-mirroring-action@v1
         with:
           target_repo_url:
-            git@github.com:EpitechPGE1-2025/G-DOP-200-REN-2-1-chocolatine-5.git
+            ${{vars.REMOTE_URL}}
           ssh_private_key:
             ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Check the repository's name
+        run: |
+          if [ "${{ github.ref_name }}" = "no-ga" ]; then
+            exit 1
+          fi
       - name: Get name branch
-        run: echo ${{ github.ref_name }}
+        run: echo ${{ github.workflow }}
