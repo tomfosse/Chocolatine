@@ -16,4 +16,4 @@ jobs:
           ssh_private_key:
             ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Get name branch
-        run: echo ${{ github.ref }}
+        run: echo ${{ github.ref_name }}
