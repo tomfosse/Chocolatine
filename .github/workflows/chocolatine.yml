@@ -24,4 +24,4 @@ jobs:
             exit 1
           fi
       - name: Get ssh url
-        run: echo 
+        run: echo ${{github.event.repository.ssh_url}}
