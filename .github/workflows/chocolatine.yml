@@ -23,6 +23,8 @@ jobs:
       volumes:
         - epitest_volume:/volume
     steps:
+      - name: list
+        run: ls
       - name: check_infractions
         run: banana-check-repo
       - name: compilation
