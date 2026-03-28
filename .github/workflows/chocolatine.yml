@@ -22,7 +22,7 @@ jobs:
           fi
       - name : Check if it's the same repository
         run: |
-          if [ "${{ github.event.repository.ssh_url }} = ${{vars.REMOTE_URL}}" ]; then
+          if [ "${{ github.event.repository.ssh_url }}" = "${{vars.REMOTE_URL}}" ]; then
             exit 1
           fi
       - name: Get ssh url
