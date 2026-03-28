@@ -8,12 +8,12 @@ jobs:
       - name: Check the repository's name
         run: |
           if [ "${{ github.ref_name }}" = "no-ga" ]; then
-            echo "::error Repository's name is not valid" && exit 1 ; 
+            echo "::error::Repository's name is not valid" && exit 1 ; 
           fi
       - name : Check if it's the same repository
         run: |
           if [ "${{ github.event.repository.ssh_url }}" = "${{vars.MIRROR_SSH_URL}}" ]; then
-            echo "::error Repository's name is the same as the target" && exit 1 ; 
+            echo "::error::Repository's name is the same as the target" && exit 1 ; 
           fi
   check_compilation_and_coding_style:
     runs-on: ubuntu-latest
