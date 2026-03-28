@@ -1,5 +1,5 @@
 name: Chocolatine project
-on: [push, delete]
+on: [push]
 
 jobs:
   check_remote_is_valid:
