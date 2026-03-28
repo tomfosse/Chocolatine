@@ -21,10 +21,6 @@ jobs:
     container:
       image: epitechcontent/epitest-docker
     steps:
-      - name: copy_repository_in_dir
-        run: |
-          mkdir -p /app
-          cp -r $GITHUB_WORKSPACE/* /app/
       - name: check_infractions
         run: banana-check-repo
       - name: compilation
