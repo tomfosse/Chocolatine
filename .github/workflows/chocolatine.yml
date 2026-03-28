@@ -20,15 +20,16 @@ jobs:
     needs: check_remote_is_valid
     container:
       image: epitechcontent/epitest-docker
-      volumes:
-        - epitest_volume:/volume
     steps:
-      - name: list
-        run: ls
+      - name: copy_repository_in_dir
+        run: |
+          mkdir -p /app
+          cp -r $GITHUB_WORKSPACE/* /app/
       - name: check_infractions
         run: banana-check-repo
       - name: compilation
         run: make
+        working-directory: ${{ github.workspace }}
         timeout-minutes: 2
   clone_to_branch:
     runs-on: ubuntu-latest
