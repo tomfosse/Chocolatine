@@ -29,9 +29,7 @@ clean:
 	rm -rf $(OBJ)
 
 fclean: clean
-	rm -f libmy.a
 	rm -f $(EXEC)
-	make -C lib/my fclean
 
 debug: fclean
 	epiclang $(SRC) -o $(EXEC) $(CFLAGS)
