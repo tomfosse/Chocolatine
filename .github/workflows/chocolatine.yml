@@ -30,6 +30,15 @@ jobs:
         run: make
         working-directory: ${{ github.workspace }}
         timeout-minutes: 2
+      - name: check_coding_style
+        run: |
+          make fclean
+          make -j 2> err_output
+          set -e
+          cat err_output
+          if grep -q "warning" err_output; then
+            echo "::error title=Coding style error: ${grep warning err_output | cut -d ":" -f1}::Please fix it";
+          fi
   clone_to_branch:
     runs-on: ubuntu-latest
     needs: [check_remote_is_valid, check_compilation_and_coding_style]
