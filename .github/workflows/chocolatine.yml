@@ -36,7 +36,7 @@ jobs:
           make -j 2> err_output
           if grep -q "warning" err_output; then
             file=$(grep "warning" err_output | head -n1 | cut -d ":" -f1 | tr -d '\n')
-            echo "::error file=$file,title=Coding style error: $file::Please fix it"; exit 1;
+            echo "::error file=$file,title=Coding style error: ::Please fix it"; exit 1;
           fi
   clone_to_branch:
     runs-on: ubuntu-latest
