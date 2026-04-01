@@ -1,5 +1,7 @@
 name: Chocolatine project
 on: [push, delete]
+env:
+  EXECUTABLES: ${{ vars.EXECUTABLES }}
 
 jobs:
   check_remote_is_valid:
@@ -41,7 +43,10 @@ jobs:
       - name: clean_project
         run: make clean
       - name: check_executables
-        run: for i in ${{vars.EXECUTABLES}}; do [ -e "$i" ] || echo "::error title=The Executables are not present in the repository::Please check the compilation command before commit"; exit 1; done
+        run: |
+          for i in ${EXECUTABLES//,/ }; do
+            [ -e "$i" ] || { echo "::error title=Missing executable::$i absent"; exit 1; }
+          done
   clone_to_branch:
     runs-on: ubuntu-latest
     needs: [check_remote_is_valid, check_compilation_and_coding_style]
