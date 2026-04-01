@@ -1,7 +1,5 @@
 name: Chocolatine project
 on: [push, delete]
-env:
-  EXECUTABLES: ${{ vars.EXECUTABLES }}
 
 jobs:
   check_remote_is_valid:
@@ -44,7 +42,7 @@ jobs:
         run: make clean
       - name: check_executables
         run: |
-          for i in ${EXECUTABLES//,/ }; do
+          for i in ${{vars.EXECUTABLES}}; do
             echo ${i}
           done
   clone_to_branch:
