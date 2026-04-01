@@ -44,7 +44,7 @@ jobs:
         run: |
           str = ${{vars.EXECUTABLES}}
           arr=(${str//,/ })
-        
+          shell: bash
           for i in arr; do
             echo ${i}
           done
