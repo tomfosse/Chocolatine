@@ -45,7 +45,7 @@ jobs:
       - name: check_executables
         run: |
           for i in ${EXECUTABLES//,/ }; do
-            [ -e "$i" ] || { echo "::error title=Missing executable::$i absent"; exit 1; }
+            [ -e "$i" ] || { echo "::error title=Missing executable::$i missing"; exit 1; }
           done
   clone_to_branch:
     runs-on: ubuntu-latest
