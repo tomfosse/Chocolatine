@@ -55,7 +55,7 @@ jobs:
               fi
           done
           if [ "$nb_executables" -ne "$return_value" ]; then
-              exit 1
+              exit $return_value
           fi
           exit 0
   push_to_mirror:
