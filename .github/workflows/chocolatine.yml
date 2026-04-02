@@ -40,9 +40,13 @@ jobs:
           fi
       - name: clean_project
         run: make clean
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
       - name: check_executables
         shell: bash
         run: |
+          cd $GITHUB_WORKSPACE
           return_value=0
           nb_executables=0
           str=${{vars.EXECUTABLES}}
@@ -51,7 +55,6 @@ jobs:
           for i in "${arr[@]}"; do
               ((nb_executables++))
               if [ -e "$i" ]; then
-                  echo "hello world!"
                   ((return_value++))
               fi
           done
