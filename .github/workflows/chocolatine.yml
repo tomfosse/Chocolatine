@@ -43,6 +43,7 @@ jobs:
               grep "warning:" err_output > warnings
               cat warnings | while read line;
               do
+                file=$(grep "warning" err_output | head -n1 | cut -d ":" -f1 | tr -d '\n')
                 echo "::error file=$file,title=Coding style error ::Please fix it";
               done
               exit 1;
