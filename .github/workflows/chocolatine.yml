@@ -57,8 +57,10 @@ jobs:
           arr=($str)
           for i in "${arr[@]}"; do
               ((nb_executables++))
-              if [ -e "$i" ]; then
-                  ((return_value++))
+              if [ -x "$i" ]; then
+                if [ -e "$i" ]; then
+                    ((return_value++))
+                fi
               fi
           done
           if [ "$nb_executables" -ne "$return_value" ]; then
