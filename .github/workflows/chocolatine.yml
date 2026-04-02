@@ -38,7 +38,7 @@ jobs:
       - name: check_coding_style
         run: |
           make fclean
-          make -j 2> err_output
+          make CC=epiclang -j 2> err_output
           if grep -q "warning:" err_output; then
               grep "warning:" err_output > warnings
               cat warnings | while read line;
