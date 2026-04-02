@@ -10,10 +10,15 @@ jobs:
           if [ "${{ github.ref_name }}" = "no-ga" ]; then
             echo "::error title=Branch's name isn't valid::Please rename your branch"; exit 1; 
           fi
-      - name : Check if it's the same repository
+      - name: Check if it's the same repository
         run: |
           if [ "${{ github.event.repository.ssh_url }}" = "${{vars.MIRROR_SSH_URL}}" ]; then
             echo "::error title=Repository's name is the same as the target::Please rename your remote repository"; exit 1; 
+          fi
+      - name: Check if the repository is on Epitech
+        run: |
+          if [[ "${{ github.event.repository.ssh_url }}" == *"Epitech"* ]]; then
+              exit 1
           fi
   check_compilation_and_coding_style:
     runs-on: ubuntu-latest
@@ -59,7 +64,6 @@ jobs:
           if [ "$nb_executables" -ne "$return_value" ]; then
               exit 1
           fi
-          echo "GOOD"
           exit 0
   push_to_mirror:
     runs-on: ubuntu-latest
