@@ -57,7 +57,7 @@ jobs:
               fi
           done
           if [ "$nb_executables" -ne "$return_value" ]; then
-              echo "ERROR"
+              exit 1
           fi
           echo "GOOD"
           exit 0
