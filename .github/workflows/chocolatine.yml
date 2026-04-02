@@ -44,19 +44,19 @@ jobs:
         shell: bash
         run: |
           find=false
-          str="${{vars.EXECUTABLES}}"
+          str=${{vars.EXECUTABLES}}
           arr=($str)
           list_file=($(ls))
           arr_list=($list_file)
           for i in "${arr[@]}"; do
-              found=false
+              find=false
               for y in "${arr_list[@]}"; do
                   if [[ "$i" == "$y" ]]; then
-                      found=true
+                      find=true
                       break
                   fi
               done
-              if ! $found; then
+              if ! $find; then
                   echo "Missing executable: $i"
                   return_value=1
               fi
