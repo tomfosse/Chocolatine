@@ -39,9 +39,13 @@ jobs:
         run: |
           make fclean
           make -j 2> err_output
-          if grep -q "warning" err_output; then
-            file=$(grep "warning" err_output | head -n1 | cut -d ":" -f1 | tr -d '\n')
-            echo "::error file=$file,title=Coding style error ::Please fix it"; exit 1;
+          if grep -q "warning:" err_output; then
+              grep "warning:" err_output > warnings
+              cat warnings | while read line;
+              do
+                echo "::error file=$file,title=Coding style error ::Please fix it";
+              done
+              exit 1;
           fi
       - name: clean_project
         run: make clean

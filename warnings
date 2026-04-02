@@ -1,10 +1,3 @@
 main.c:1:1: warning: [Banana] [Minor] file not starting with standard Epitech header (C-G1)
-    1 | int main(void)
-      | ^
 main.c:6:13: warning: [Banana] [Major] nested if statement at depth 3 (C-C1)
-    6 |             if (y == i)
-      |             ^
 main.c:4:1: warning: [Banana] [Minor] missing blank line after variable declaration section (C-L6)
-    4 |     if (i == 0)
-      | ^
-3 warnings generated.
