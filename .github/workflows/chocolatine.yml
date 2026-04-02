@@ -41,12 +41,12 @@ jobs:
       - name: clean_project
         run: make clean
       - name: check_executables
+        shell: bash
         run: |
-          str = ${{vars.EXECUTABLES}}
-          arr=(${str//,/ })
-          shell: bash
-          for i in arr; do
-            echo ${i}
+          str="${{ vars.EXECUTABLES }}"
+          arr=($str)
+          for i in "${arr[@]}"; do
+            echo "$i"
           done
   push_to_mirror:
     runs-on: ubuntu-latest
