@@ -43,7 +43,7 @@ jobs:
       - name: check_executables
         shell: bash
         run: |
-          str="${{ vars.EXECUTABLES }}"
+          str="${{vars.EXECUTABLES}}"
           arr=($str)
           for i in "${arr[@]}"; do
             echo "$i"
