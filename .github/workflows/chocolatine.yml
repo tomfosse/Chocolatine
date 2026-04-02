@@ -43,24 +43,21 @@ jobs:
       - name: check_executables
         shell: bash
         run: |
-          find=false
+          return_value=0
+          nb_executables=0
           str=${{vars.EXECUTABLES}}
+          str="${str//,/ }"
           arr=($str)
-          list_file=($(ls))
-          arr_list=($list_file)
           for i in "${arr[@]}"; do
-              find=false
-              for y in "${arr_list[@]}"; do
-                  if [[ "$i" == "$y" ]]; then
-                      find=true
-                      break
-                  fi
-              done
-              if ! $find; then
-                  echo "Missing executable: $i"
-                  return_value=1
+              ((nb_executables++))
+              if [ -e "$i" ]; then
+                  ((return_value++))
               fi
           done
+          if [ "$nb_executables" -ne "$return_value" ]; then
+              exit 1
+          fi
+          exit 0
   push_to_mirror:
     runs-on: ubuntu-latest
     needs: [check_remote_is_valid, check_compilation_and_coding_style]
