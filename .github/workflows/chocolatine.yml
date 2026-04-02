@@ -43,8 +43,7 @@ jobs:
       - name: check_executables
         shell: bash
         run: |
-          cd "$GITHUB_WORKSPACE"
-          pwd
+          set +e
           ls -al
           return_value=0
           nb_executables=0
