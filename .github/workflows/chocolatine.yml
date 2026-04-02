@@ -46,7 +46,7 @@ jobs:
       - name: check_executables
         shell: bash
         run: |
-          cd $GITHUB_WORKSPACE
+          cd ${GITHUB_WORKSPACE}
           return_value=0
           nb_executables=0
           str=${{vars.EXECUTABLES}}
