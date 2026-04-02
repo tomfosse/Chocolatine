@@ -46,7 +46,7 @@ jobs:
           str="${{vars.EXECUTABLES}}"
           arr=($str)
           for i in "${arr[@]}"; do
-            echo "$i"
+            echo $i
           done
   push_to_mirror:
     runs-on: ubuntu-latest
