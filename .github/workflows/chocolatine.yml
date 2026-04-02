@@ -17,7 +17,7 @@ jobs:
           fi
       - name: Check if the repository is on Epitech
         run: |
-          if [[ "${{ github.event.repository.ssh_url }}" == *"Epitech"* ]]; then
+          if [[ "${{ github.event.repository.ssh_url }}" == *${{vars.organisation}}* ]]; then
               exit 1
           fi
   check_compilation_and_coding_style:
