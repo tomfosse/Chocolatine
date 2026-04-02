@@ -40,13 +40,12 @@ jobs:
           fi
       - name: clean_project
         run: make clean
-      - uses: actions/checkout@v6.0.2
-        with:
-          fetch-depth: 0
       - name: check_executables
         shell: bash
         run: |
-          cd ${{github.workspace}}
+          cd "$GITHUB_WORKSPACE"
+          pwd
+          ls -al
           return_value=0
           nb_executables=0
           str=${{vars.EXECUTABLES}}
