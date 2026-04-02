@@ -59,6 +59,7 @@ jobs:
           if [ "$nb_executables" -ne "$return_value" ]; then
               echo "ERROR"
           fi
+          echo "GOOD"
           exit 0
   push_to_mirror:
     runs-on: ubuntu-latest
