@@ -37,6 +37,7 @@ jobs:
         timeout-minutes: 2
       - name: check_coding_style
         run: |
+          set -e
           make fclean
           make CC=epiclang -j 2> err_output
           if grep -q "warning:" err_output; then
@@ -49,7 +50,6 @@ jobs:
                 error=$(echo "$line" | head -n1 | cut -d "]" -f3 | cut -d "(" -f1 | tr -d '\n')
                 echo "::error file=$file,title=$type coding style error ::$code - $error";
               done
-              exit 1;
           fi
       - name: clean_project
         run: make clean
