@@ -45,7 +45,9 @@ jobs:
               do
                 file=$(echo "$line" | cut -d ":" -f1)
                 type=$(echo "$line" | head -n1 | cut -d "[" -f3 | cut -d "]" -f1 | tr -d '\n')
-                echo "::error file=$file,title=$type coding style error ::Please fix it";
+                code=$(echo "$line" | head -n1 | cut -d "(" -f2 | cut -d ")" -f1 | tr -d '\n')
+                error=$(echo "$line" | head -n1 | cut -d "]" -f3 | cut -d "(" -f1 | tr -d '\n')
+                echo "::error file=$file,title=$type coding style error ::$code - $error";
               done
               exit 1;
           fi
