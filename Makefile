@@ -5,7 +5,7 @@
 ## This is the makefile of the project my_top.
 ##
 
-CC := epiclang
+CC := clang
 
 SRC =  main.c
 
