@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Check the repository's name
         run: |
-          if [ startsWith(github.ref_name, 'no-ga/') ]; then
+          if: startsWith(github.ref_name, 'no-ga/'); then
             echo "::error title=Branch's name isn't valid::Please rename your branch"; exit 1; 
           fi
       - name: Check if it's the same repository
