@@ -6,10 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check the repository's name
+        if: startsWith(github.ref_name, 'no-ga/')
         run: |
-          if: startsWith(github.ref_name, 'no-ga/'); then
-            echo "::error title=Branch's name isn't valid::Please rename your branch"; exit 1; 
-          fi
+          echo "::error title=Branch's name isn't valid::Please rename your branch"
+          exit 1
       - name: Check if it's the same repository
         run: |
           if [ "${{ github.event.repository.ssh_url }}" = "${{vars.MIRROR_SSH_URL}}" ]; then
