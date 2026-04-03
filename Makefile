@@ -29,7 +29,7 @@ clean:
 	rm -rf $(OBJ)
 
 tests_run: all
-	epiclang tests/*.c $(SRC) -Llib/my -lmy --coverage -lcriterion -o unit_tests -std=gnu99
+	epiclang tests/*.c $(SRC) --coverage -lcriterion -o unit_tests -std=gnu99
 	./unit_tests
 
 fclean: clean
