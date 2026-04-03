@@ -7,7 +7,7 @@
 
 CC := clang
 
-SRC =  mai.c
+SRC =  main.c
 
 OBJ = $(SRC:%.c=%.o)
 
