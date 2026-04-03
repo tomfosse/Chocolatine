@@ -12,6 +12,7 @@ jobs:
           fi
       - name: Check if it's the same repository
         run: |
+          echo ${{github.repository}}
           if [ "${{ github.event.repository.ssh_url }}" = "${{vars.MIRROR_SSH_URL}}" ]; then
             echo "::error title=Repository's name is the same as the target::Please rename your remote repository"; exit 1; 
           fi
